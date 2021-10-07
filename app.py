@@ -9,12 +9,12 @@ BUCKET = "lats-image-data"
 
 @app.route("/")
 def home():
-    contents = list_files(BUCKET)
+    contents = list_files(aws-top-jbm)
     return render_template('index.html')
 
 @app.route("/pics")
 def list():
-    contents = show_image(BUCKET)
+    contents = show_image(aws-top-jbm)
     return render_template('collection.html', contents=contents)
 
 @app.route("/upload", methods=['POST'])
@@ -22,7 +22,7 @@ def upload():
     if request.method == "POST":
         f = request.files['file']
         f.save(os.path.join(UPLOAD_FOLDER, secure_filename(f.filename)))
-        upload_file(f"uploads/{f.filename}", BUCKET)
+        upload_file(f"uploads/{f.filename}", aws-top-jbm)
         return redirect("/")
 
 if __name__ == '__main__':
