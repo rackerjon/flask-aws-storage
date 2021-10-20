@@ -5,7 +5,7 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 UPLOAD_FOLDER = "uploads"
-BUCKET = "aws-top-jbm"
+BUCKET = os.environ.get('BUCKET_NAME')
 
 @app.route("/")
 def home():
